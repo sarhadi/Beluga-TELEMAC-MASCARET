@@ -1,0 +1,26 @@
+#!/bin/sh
+
+#
+
+#PBS -q euler
+
+#PBS -l nodes=2:ppn=8
+#PBS -N ss_inter
+#
+
+if [ -n "$PBS_ENVIRONMENT" ]; then
+
+   cd $PBS_O_WORKDIR
+
+else
+
+   echo '**************************************************'
+
+   echo 'WARNING: starting WAQPRO without the PBS system'
+
+   echo '***************************************************'
+
+fi
+
+
+/opt/telemac/v6p3r1/telemac_ifortmpicdf.sh telemac2d interpolation.cas > interpolation.log
